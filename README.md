@@ -1,4 +1,4 @@
-# -[Prview](https://valeriy-sorochynskyi.github.io/airport/)
+# -[Preview](https://valeriy-sorochynskyi.github.io/airport/)
 # -[Pull request](https://github.com/Valeriy-Sorochynskyi/data-table-component/pull/1/files)
 # airport
 
