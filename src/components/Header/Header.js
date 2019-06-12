@@ -23,6 +23,21 @@ const Header = () => {
           <li className="nav-item">
             <span className="nav-item-sp">EN</span>
           </li>
+          {/*
+            Написаний вище список варто замінити так:
+
+            <ul className="nav-list">
+              {['For passengers', 'IEV Services', 'VIP', 'Corporate', 'EN']
+                .map(name => (
+                  <li className="nav-item">
+                    <span className="nav-item-sp">{name}</span>
+                  </li>
+                ))}
+            </ul>
+
+            В ідеалі вхідні дані мають приходити звідкись і мати унікальний ідентифікатор,
+            який варто вказати як key. Він потрібен аби Реакт міг ефективно проводити оновлення.
+          */}
         </ul>
       </div>
     </div>

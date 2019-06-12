@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { getData } from "./api/api";
 import { currentDay } from "./services/service";
+// Для компонентів добре було б зробити єдиний index.js і експортувати всі компоненти звідти. Це врятує від написання багатьох стрічок як нижче
 import Header from "./components/Header/Header";
 import Search from "./components/Search/Search";
 import Table from "./components/Table/Table";
@@ -14,7 +15,9 @@ class App extends Component {
   };
 
   componentDidMount() {
+    // Використовуй деструктуризацію
     const day = this.defineDayDate(this.state.day);
+    // Старайся писати код в одному стилі, тобто якщо десь async/await, то він має бути всюди, і навпаки
     getData(day).then(data => {
       this.setState({
         data,
@@ -22,7 +25,7 @@ class App extends Component {
       });
     });
   }
-
+  // Цю функцію можна винести з компонента, оскільки вона ніяк не з'єднана зі станом компонента
   defineDayDate = day => {
     if (day === "yesterday") return currentDay(-1);
     if (day === "tomorrow") return currentDay(1);
@@ -66,6 +69,7 @@ class App extends Component {
   filteredList = (list, searchValue) => {
     if (list) {
       return list.filter(item => {
+        // Тут можна підрефакторити і винести дії, які повторюються, в окрему функцію
         return (
           (item["airportToID.name_en"] &&
             item["airportToID.name_en"]
@@ -87,6 +91,7 @@ class App extends Component {
 
   render() {
     const { status, data, day, searchValue } = this.state;
+    // Змінна list перевизначається без причини. Потрібно або об'єднати getDataByStatus i filteredList в один виклик, або зробити для них різні змінні, якщо це потрібно
     let list = this.getDataByStatus(status, data);
     const activeDep = status === "departure" ? "active" : "";
     const activeArr = status === "arrival" ? "active" : "";
@@ -95,6 +100,7 @@ class App extends Component {
       <>
         <Header />
         <div className="main-container">
+          {/* handleInput не існує */}
           <Search onChange={this.handleInput} onSubmit={this.handleSubmit} />
           <div className="search-results">
             <div className="main-tabs">

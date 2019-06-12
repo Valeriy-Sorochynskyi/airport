@@ -18,7 +18,7 @@ const ArrivalConfig = [
   "airline",
   "codeShareData"
 ];
-
+// Виносити функції - хороша практика, тут все гуд. До речі, else тут лишній, оскільки якщо перший if спрацює, до другого return вона ніколи не добереться :)
 const getConfig = (status, departureConfig, ArrivalConfig) => {
   if (status === "departure") {
     return departureConfig;
@@ -48,6 +48,7 @@ const Table = ({ data, status }) => {
           return (
             <tr key={item.ID}>
               {config.map((header, i) => {
+                /* Не сильно добре використовувати індекси як ключі, оскільки вони змінні, і можуть виникати баги при зміні props'ів. В ідеалі це має бути якийсь унікальний ідентифікатор а-ля id'шка */
                 if (header === "airline" && item[header]) {
                   return <td key={i}>{item[header].en.name}</td>;
                 }

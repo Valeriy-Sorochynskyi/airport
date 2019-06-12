@@ -1,6 +1,7 @@
 import React from "react";
 
 const Search = ({ onSubmit }) => {
+  // Почитай за роботу з формами https://reactjs.org/docs/forms.html
   let textInput = React.createRef();
   return (
     <div className="flights-search-container">
